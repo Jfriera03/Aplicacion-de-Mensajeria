@@ -1,4 +1,4 @@
-# Aplicación de Mensajería
+# Aplicación de Mensajería - En desarrollo
 
 Este proyecto implementa una aplicación de mensajería web completa, compuesta por un backend desarrollado en **Spring Boot** y un frontend basado en **React**. Está diseñada para permitir que los usuarios se registren, autentiquen, gestionen sus perfiles, y mantengan conversaciones privadas o grupales de forma segura.
 
