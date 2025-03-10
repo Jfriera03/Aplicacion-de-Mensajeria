@@ -1,54 +1,96 @@
-# Proyecto Aplicación de Mensajería - En desarrollo
+# Grupo 1 - Aplicación de mensajería - Front
+`Integrantes`: Luz Salvá, Laura Cavero, Juan Francisco Riera, Constantino Pérez
 
 ## Introducción
-Este proyecto es una aplicación completa de mensajería, compuesta por un backend desarrollado en **Spring Boot** y un frontend desarrollado en **React**. La aplicación permite a los usuarios registrarse, autenticarse, mantener conversaciones privadas o grupales, y gestionar perfiles de manera segura y sencilla.
+Este proyecto consiste en una interfaz web desarrollada con **React** que ofrece una experiencia moderna y responsiva. La aplicación incluye funcionalidades como autenticación, navegación entre páginas y manejo de conversaciones en tiempo real.
 
----
+## Características principales
+- **Autenticación**: Permite a los usuarios iniciar sesión y registrarse.
+- **Gestor de Conversaciones**: Muestra una lista de conversaciones existentes y permite seleccionar una para interactuar.
+- **Panel de Chat**: Incluye la funcionalidad de enviar mensajes y usar emojis en un entorno visual atractivo.
 
-## Backend
+## Estructura del Proyecto
 
-El backend es el núcleo de la aplicación y gestiona:
+El proyecto se organiza en los siguientes componentes principales:
 
-- **Autenticación y Autorización** con JWT para asegurar sesiones seguras.
-- **Gestión de conversaciones**, tanto privadas como grupales.
-- **Manejo de mensajes**, incluyendo envío, recepción, y eliminación de mensajes.
-- **Lecturas de mensajes** mediante registro de visualizaciones.
-- **Persistencia de datos** con base de datos MySQL.
-- Uso de la **arquitectura hexagonal**, separando claramente lógica de negocio, persistencia y controladores, utilizando puertos y adaptadores.
+1. **LoginPage**: Pantalla de autenticación para inicio de sesión y registro.
+2. **Homepage**: Contiene la estructura principal de la aplicación dividida en dos paneles:
+    - **LeftPanel**: Muestra las conversaciones disponibles.
+    - **RightPanel**: Permite la interacción dentro de una conversación seleccionada.
+3. **ChatContainer**: Maneja el flujo y visualización de mensajes dentro de una conversación.
 
-### Tecnologías principales:
-- **Spring Boot**
-- **MySQL**
-- **Xampp**
+## Tecnologías Utilizadas
+- **React**: Biblioteca principal para construir la interfaz de usuario.
+- **Material-UI**: Framework de diseño para estilos y componentes responsivos.
+- **Axios**: Para manejar peticiones HTTP.
+- **React Router**: Para navegación entre rutas.
 
----
+## Configuración y Ejecución
 
-## Frontend
+### Prerrequisitos
+Asegúrate de tener instalados los siguientes programas:
+- **Node.js**: [Descargar Node.js](https://nodejs.org)
+- **npm** o **yarn**: Administrador de paquetes.
 
-El frontend proporciona una interfaz de usuario amigable y funcional, con características destacadas:
+### Instrucciones de Instalación
+1. Clona este repositorio:
+    ```bash
+    git clone https://github.com/Analisi-i-Arquitectura-de-Software/projecte-01-front.git
+    ```
+2. Ingresa al directorio del proyecto:
+    ```bash
+    cd projecte-01-front
+    ```
+3. Instala las dependencias:
+    ```bash
+    npm install
+    ```
 
-- **Login y Registro** con formularios integrados con la API backend.
-- **Gestión visual de conversaciones**, con posibilidad de enviar mensajes y emojis.
-- **Chat en tiempo real**, con soporte para emojis y envío de archivos adjuntos.
-- **Interfaz moderna y responsiva**, construida con componentes reutilizables en React y Material-UI.
-- **Seguridad de sesión** mediante tokens JWT almacenados en `localStorage`.
+### Ejecución del Proyecto
+1. Inicia el servidor de desarrollo:
+    ```bash
+    npm start
+    ```
+2. Abre tu navegador y accede a `http://localhost:3000`.
 
-### Componentes clave:
-- **LoginPage**: Registro e inicio de sesión.
-- **Homepage**: Visualización y gestión de conversaciones.
-- **ChatContainer**: Gestión interactiva de mensajes en tiempo real.
+## Componentes Clave
 
-### Tecnologías principales:
-- **React**
-- **Material-UI**
-- **Axios**
+### LoginPage
+- Maneja el inicio de sesión y registro de usuarios.
+- Hace uso de `axios` para comunicarse con los endpoints de la API.
 
----
+### Homepage
+- Contiene el contenedor principal de la aplicación dividido en:
+  - **LeftPanel**: Lista de conversaciones con funcionalidad de búsqueda.
+  - **RightPanel**: Incluye el flujo de chat y opciones como emojis y adjuntos.
 
-## Arquitectura del Proyecto
-Se ha utilizado una **arquitectura hexagonal** que asegura una separación clara entre la lógica de negocio, interfaces de usuario, y persistencia de datos. Esto favorece la flexibilidad, la mantenibilidad, y facilita las pruebas del software.
+### AttachmentPopover
+- Proporciona un menú para adjuntar documentos, fotos o stickers al chat.
 
----
+### ChatContainer
+- Administra los mensajes enviados y recibidos en tiempo real.
 
 ## Seguridad
-La seguridad se basa en un sistema robusto de autenticación mediante **tokens JWT**, garantizando que sólo usuarios autenticados y autorizados puedan acceder a las funcionalidades del sistema.
+El sistema de autenticación utiliza un token almacenado en `localStorage` para gestionar las sesiones.
+
+## API Endpoints
+
+### Registro de Usuario
+- **POST** `/auth/register`
+- Cuerpo:
+  ```json
+  {
+    "username": "nombreUsuario",
+    "password": "miContraseña",
+    "email": "correo@ejemplo.com",
+    "name": "Nombre Completo"
+  }
+
+### Inicio de Sesión
+- **POST** `/auth/login`
+- Cuerpo:
+  ```json
+  {
+    "username": "nombreUsuario",
+    "password": "miContraseña"
+  }
